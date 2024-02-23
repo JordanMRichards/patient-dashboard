@@ -37,10 +37,10 @@ This is my task submission for a job application. The goal was to create a simpl
   By default this service will be hosted on port `3000`
 
   ### Why Next.js?
-  I chose Next.js primarly for its static-generation functionality. It also sets the app up well for future iterarions, such as statically processed URL params. I like that Next.js doesn't box you into a corner, where you can write as much or as server-side code as necessary. For this project I've avoided implementing an api backend within the Next.js codebase.
+  I chose Next.js primarly for its static-generation. It also sets the app up well for future iterarions, such as URL param handling. I like that Next.js doesn't box you into a corner, where you can write as much or as server-side code as necessary. For this project I've avoided implementing an api backend within the Next.js codebase.
 
-  ## API requests are sent both from the front-end and back-end:
-  Every minute, the statically generated props are regenerated - triggering a server-side fetch to the API. For instance, if 1,000 customers land on home within the same minute, only the first page load within a 60 second window will trigger the static generation.
+  ### Requests to the API are sent both from the front-end and back-end:
+  The statically generated props are regenerated as frequently as once a minute - triggering a server-side fetch to the API. For instance, if 1,000 customers land on home within the same minute, only the first page load within a 60 second window will trigger the static generation.
   
   This ensures:
    - Majority of users have their page load request load immediately
@@ -50,7 +50,7 @@ This is my task submission for a job application. The goal was to create a simpl
 
   Note: I decided not to cache the data in client local storage due to the sensitivity of the data.
 
-  ### Why does this Next.js app not handle the API itself?
+  ### Why isn't the API located in the Next.js codebase?
   I decided to keep this separate from this Next.js web app for the following reasons:
   - code-ownership: supports dedicated API-focused team
   - dependency management - separate dependency structure makes it easier to reason about the dependencies which are related to the web app itself, vs only utilised for the back-end (such as`@fast-csv/parse`)
@@ -70,7 +70,7 @@ Alternatively you can run a dev build via: `npm run dev`
 
 # Next steps:
  - Implement robust validation for the CSV data
- - Make API error response more accessible to other consumers (send the error message back to requestor)
+ - Make API error response more accessible to other consumers by adjusting response payload structure (send the error message back to requestor)
  - Research optimal localization library. Move all strings into localization
  - Add support for specifying clinic id via URL
  - Improve styling (for example, using icons for the table header sorting toggle)
